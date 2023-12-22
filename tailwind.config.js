@@ -12,12 +12,20 @@ module.exports = {
         },
         black: "#000",
         salmon: "#ff7070",
+        red: "#ff0000",
+        palegreen: "#7eff8b",
+        brown: "#bd3838"
       },
       spacing: {},
       fontFamily: {
         itim: "Itim",
         inter: "Inter",
         inherit: "inherit",
+      },
+      borderRadius: {
+        "6xl": "25px",
+        "4xs-5": "8.5px",
+        "11xl": "30px",
       },
     },
     fontSize: {

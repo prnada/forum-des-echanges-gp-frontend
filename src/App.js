@@ -1,54 +1,19 @@
-import { useEffect } from "react";
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Routes } from 'react-router-dom';
 import {
-  Routes,
-  Route,
-  useNavigationType,
-  useLocation,
+  Route
 } from "react-router-dom";
-import Frame from "./pages/Frame";
-import Profile from "./components/Profile";
+import Home from "./Pages/Home";
+import Profile from "./Pages/Profile";
+import Categories from "./Pages/Categories";
 function App() {
-  const action = useNavigationType();
-  const location = useLocation();
-  const pathname = location.pathname;
-
-  useEffect(() => {
-    if (action !== "POP") {
-      window.scrollTo(0, 0);
-    }
-  }, [action, pathname]);
-
-  useEffect(() => {
-    let title = "";
-    let metaDescription = "";
-
-    switch (pathname) {
-      case "/":
-        title = "";
-        metaDescription = "";
-        break;
-    }
-
-    if (title) {
-      document.title = title;
-    }
-
-    if (metaDescription) {
-      const metaDescriptionTag = document.querySelector(
-        'head > meta[name="description"]'
-      );
-      if (metaDescriptionTag) {
-        metaDescriptionTag.content = metaDescription;
-      }
-    }
-  }, [pathname]);
-
   return (
     <Router>
       <div>
-        <Route path="/" Component={Frame} />
-        <Route path="/profile" Component={Profile} />
+        <Routes>
+          <Route path="/" Component={Home} />
+          <Route path="/profile" Component={Profile} />
+          <Route path="/categories" Component={Categories} />
+        </Routes>
       </div>
     </Router>
   );
