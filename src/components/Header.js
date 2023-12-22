@@ -25,16 +25,6 @@ const Header = () => {
             alt=""
             src="/line-1@2x.png"
           />
-          <img
-            className="relative max-h-full w-[49px] object-cover z-[1]"
-            alt=""
-            src="/line-1@2x.png"
-          />
-          <img
-            className="absolute my-0 mx-[!important] top-[31px] left-[0px] max-h-full w-[49px] object-cover z-[2]"
-            alt=""
-            src="/line-1@2x.png"
-          />
         </div>
       </div>
     </div>
