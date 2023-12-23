@@ -9,6 +9,7 @@ import Login from './components/Login';
 import Register from './components/Register';
 import Success from './components/Success';
 import Posts from './Pages/Posts'
+import PostPage from './Pages/PostPage'
 function App() {
   return (
     <Router>
@@ -21,6 +22,7 @@ function App() {
           <Route path="/Register" Component={Register} />
           <Route path="/Success" Component={Success} />
           <Route path="/Posts" Component={Posts} />
+          <Route path="/Post" Component={PostPage} />
         </Routes>
       </div>
     </Router>

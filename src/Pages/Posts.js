@@ -1,44 +1,53 @@
-import Post from "../components/Post"
+import Post from "./Post";
+import Pagination from "../components/Pagination";
+import Header2 from "../components/Header2";
+import Footer2 from "../components/Footer2";
 const Posts = () => {
   return (
-    <div className="relative w-full h-[1600px] text-left text-13xl text-white font-inter">
-      <div className="absolute top-[0px] left-[0px] bg-gray-100 w-[1536px] h-[1600px] overflow-hidden" />
-      <div className="absolute top-[0px] left-[0px] w-[1540px] h-[1421px]">
-        <div className="absolute top-[0px] left-[0px] bg-black w-[1540px] overflow-hidden flex flex-row items-center justify-start py-[11px] px-[39px] box-border gap-[780px]">
-          <div className="relative">Forum name</div>
-          <div className="relative w-[473px] h-[63px] shrink-0">
-            <img
-              className="absolute top-[1px] left-[213px] w-12 h-[61.6px] shrink-0 object-cover"
-              alt=""
-              src="/frame-6@2x.png"
-            />
-            <img
-              className="absolute top-[0px] left-[300px] w-[101.14px] h-[63px] shrink-0 object-cover"
-              alt=""
-              src="/frame-5@2x.png"
-            />
-            <div className="absolute top-[16px] left-[401px] shrink-0 flex flex-col items-start justify-start gap-[15px]">
-              <img
-                className="relative max-h-full w-[49px] object-cover z-[0]"
-                alt=""
-                src="/line-1@2x.png"
-              />
-              <img
-                className="relative max-h-full w-[49px] object-cover z-[1]"
-                alt=""
-                src="/line-3@2x.png"
-              />
-              <img
-                className="absolute my-0 mx-[!important] top-[31px] left-[0px] max-h-full w-[49px] object-cover z-[2]"
-                alt=""
-                src="/line-2@2x.png"
-              />
-            </div>
+    <div className="font-inter text-white">
+      <div className="bg-gray-100 w-full min-h-screen">
+        <div className="py-4 px-10 bg-black">
+          <div className="flex justify-between items-center">
+            <Header2 />
           </div>
         </div>
-        <div className="relative mt-80">
-          <Post title="Post Title 1" date="2023-01-01" creator="John Doe" comments={5} category="Tech" />
-          <Post title="Post Title 1" date="2023-01-01" creator="John Doe" comments={5} category="Tech" />
+        <div className="p-10">
+          <div className="flex justify-between items-center mb-6">
+            <button className="bg-black text-white p-2 rounded">Rédiger</button>
+            <div className="flex items-center bg-brown rounded p-2">
+              <span className="text-white mr-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-search" viewBox="0 0 16 16">
+                  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.1 1.1 0 0 0-.115-.098 6.493 6.493 0 0 0 1.398-1.397zM13 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                </svg>
+              </span>
+              <input
+                type="text"
+                placeholder="Search"
+                className="bg-transparent outline-none text-white placeholder-white flex-grow"
+              />
+              <button className="bg-black text-white p-2 rounded ml-2">Search</button>
+            </div>
+          </div>
+          <div className="space-y-4">
+            <Post
+              title="Example Post Title"
+              date="2023-01-01"
+              creator="John Doe"
+              comments={5}
+              category="Tech"
+            />
+            <Post
+              title="Example Post Title2"
+              date="2023-01-01"
+              creator="John Doe2"
+              comments={5}
+              category="Tech"
+            />
+            {/* Add more Post components as needed */}
+          </div>
+          <br /><br /><br /><br /><br /><br /><br /><br /><br />
+          <Pagination />
+          <Footer2 />
         </div>
       </div>
     </div>
