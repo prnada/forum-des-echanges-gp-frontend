@@ -10,6 +10,7 @@ import Register from './components/Register';
 import Success from './components/Success';
 import Posts from './Pages/Posts'
 import PostPage from './Pages/PostPage'
+import OtherProfile from './Pages/OtherProfile';
 function App() {
   return (
     <Router>
@@ -23,6 +24,7 @@ function App() {
           <Route path="/Success" Component={Success} />
           <Route path="/Posts" Component={Posts} />
           <Route path="/Post" Component={PostPage} />
+          <Route path="/OtherProfile" Component={OtherProfile} />
         </Routes>
       </div>
     </Router>

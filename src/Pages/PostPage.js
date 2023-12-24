@@ -1,6 +1,7 @@
 import React from 'react';
 import Header2 from '../components/Header2';
 import Footer2 from '../components/Footer2';
+import Pagination from '../components/Pagination';
 
 const PostPage = () => {
     // Dummy data for comments
@@ -57,7 +58,7 @@ const PostPage = () => {
                     ))}
                 </section>
             </main>
-            <br></br><br></br><br></br><br></br>
+            <Pagination></Pagination>
             <Footer2 />
         </div>
     );

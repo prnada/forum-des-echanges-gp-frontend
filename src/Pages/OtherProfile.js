@@ -1,12 +1,12 @@
-import Footer from "./Footer";
-import Header from "./Header";
-import SideBar from './SideBar';
-const Profile = () => {
+import Footer from "../components/Footer";
+import Header2 from "../components/Header2";
+import SideBar from '../components/SideBar';
+const OtherProfile = () => {
   return (
     <div className="relative bg-white w-full h-[1024px] overflow-hidden">
       <div className="absolute top-[0px] left-[0px] w-[1536px] h-[1213px]">
         <div className="absolute top-[0px] left-[-4px] bg-white w-[1540px] h-[1024px] overflow-hidden">
-          <Header />
+          <Header2 />
           <Footer />
           <SideBar />
           <div className="absolute top-[147px] left-[111px] w-[824px] h-[399px] text-left text-21xl text-black font-itim">
@@ -40,4 +40,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default OtherProfile;

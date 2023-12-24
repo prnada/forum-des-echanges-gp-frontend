@@ -1,45 +1,60 @@
+import { useState, useEffect } from 'react';
+
 const Category = () => {
+    const [showMenu, setShowMenu] = useState(false);
+
+    // Function to close the menu when clicking outside of it
+    const closeMenu = (e) => {
+        // Close only if clicking outside the menu
+        if (showMenu && e.target.closest('.menu-container') === null) {
+            setShowMenu(false);
+        }
+    };
+
+    // Add event listener when the menu is shown
+    useEffect(() => {
+        if (showMenu) {
+            document.addEventListener('click', closeMenu);
+        }
+
+        // Cleanup event listener
+        return () => document.removeEventListener('click', closeMenu);
+    }, [showMenu]);
+
     return (
-        <>
-            {/* <div className="absolute top-[1225px] left-[58px] w-[1420px] flex flex-col items-start justify-start gap-[10px]"> */}
-            <div className="relative rounded-6xl w-[1439px] h-[246px] z-[0]">
-                <img
-                    className="absolute inset-0 w-full h-full object-cover"
-                    alt=""
-                    src="/rectangle-2@2x.png"
-                />
-                <img
-                    className="absolute inset-0 w-full h-full object-cover"
-                    alt=""
-                    src="/rectangle-2@2x.png"
-                />
-                <img
-                    className="absolute inset-0 w-full h-full object-cover"
-                    alt=""
-                    src="/rectangle-2@2x.png"
-                />
-                <div className="absolute h-[17.32%] w-[21.77%] top-[10.98%] left-[30.58%] inline-block">
-                    Posts created
-                </div>
-                <div className="absolute h-[17.32%] w-[15.96%] top-[10.98%] left-[55.73%] inline-block">
-                    Latest Post
-                </div>
-                <div className="absolute h-[17.32%] w-[6.22%] top-[54.47%] left-[59.69%] inline-block">
-                    Date
-                </div>
-                <div className="absolute h-[28.05%] w-[15.08%] top-[67.07%] right-[1.32%] bottom-[4.88%] left-[83.6%] rounded-4xs-5 bg-black flex flex-row items-center justify-start p-[25.5px] box-border text-center text-white">
-                    <div className="relative flex items-center justify-center w-[147px] h-[60px] shrink-0">
-                        Explore
-                    </div>
-                </div>
-                <div className="absolute top-[41.87%] left-[3.68%]">Description</div>
-                <div className="absolute top-[10.98%] left-[80.19%]">Creator</div>
-            </div>
-            <div className="absolute my-0 mx-[!important] top-[10px] left-[53px] text-29xl font-extrabold inline-block w-[385px] h-14 shrink-0 z-[1]">
+        <div className="flex items-center justify-between bg-white shadow-md rounded-2xl p-4 my-2 relative">
+            <div className="ml-4 font-bold text-xl flex-1">
                 Category Title
             </div>
-            {/* </div> */}
-        </>
+            <div className="flex-1">
+                <div className="font-semibold">Posts created</div>
+            </div>
+            <div className="flex-1">
+                <div className="font-semibold">Latest Post</div>
+            </div>
+            <div className="flex-1">
+                <div className="font-semibold">Date</div>
+            </div>
+            <button className="bg-black text-white rounded-md px-6 py-2">
+                Explore
+            </button>
+            <div className="relative menu-container">
+                <button
+                    onClick={() => setShowMenu(!showMenu)}
+                    className="text-black text-xl focus:outline-none"
+                    style={{ fontSize: "2rem", padding: "0.5rem" }}
+                >
+                    ⋮
+                </button>
+                {showMenu && (
+                    <div className="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white z-50">
+                        <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+                            <a href="#" className="block px-4 py-2 text-sm text-red hover:bg-gray-100" role="menuitem">Remove Category</a>
+                        </div>
+                    </div>
+                )}
+            </div>
+        </div>
     );
 };
 

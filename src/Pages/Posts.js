@@ -5,7 +5,7 @@ import Footer2 from "../components/Footer2";
 const Posts = () => {
   return (
     <div className="font-inter text-white">
-      <div className="bg-gray-100 w-full min-h-screen">
+      <div className="bg-gray w-full min-h-screen">
         <div className="py-4 px-10 bg-black">
           <div className="flex justify-between items-center">
             <Header2 />
@@ -45,11 +45,13 @@ const Posts = () => {
             />
             {/* Add more Post components as needed */}
           </div>
-          <br /><br /><br /><br /><br /><br /><br /><br /><br />
           <Pagination />
-          <Footer2 />
+
         </div>
       </div>
+      <footer className="bg-black text-white p-4 text-center mt-auto">
+        All Rights Reserved. © 2024 Forum Name
+      </footer>
     </div>
   );
 };
