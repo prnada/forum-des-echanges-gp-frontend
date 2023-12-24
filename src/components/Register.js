@@ -22,10 +22,7 @@ const Register = () => {
                                 <h5>Username</h5>
                                 <input class="input" type="text" />
                             </div>
-                            <div>
-                                <h5>Username22</h5>
-                                <input class="input" type="text" />
-                            </div>
+                        
                         </div>
                         <div class="input-div two">
                             <div class="i">
