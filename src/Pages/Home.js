@@ -5,7 +5,7 @@ const Home = () => {
   return (
     <div className="relative bg-white w-full h-[1024px] overflow-hidden">
       <div className="absolute top-[0px] left-[0px] w-[1536px] h-[1213px]">
-        <div className="absolute top-[0px] left-[0px] rounded-[5px] box-border w-[1536px] h-[1213px] border-[2px] border-dashed border-blueviolet">
+        <div className="absolute top-[0px] left-[0px] rounded-[5px] box-border w-[1536px] h-[1213px]t">
           <SideBar />
           <div className="absolute top-[0px] left-[0px] bg-white w-[1540px] h-[1024px] overflow-hidden text-left text-13xl text-white font-itim">
             <div className="absolute top-[455px] left-[160px] text-black inline-block w-[1119px] h-[450px]">
