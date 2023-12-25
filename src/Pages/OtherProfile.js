@@ -16,6 +16,9 @@ const OtherProfile = () => {
             <div className="absolute top-[97px] left-[303px] text-gray">
               email address
             </div>
+            <div className="absolute top-[97px] left-[303px] text-gray">
+              email address
+            </div>
             <div className="absolute top-[187px] left-[308px]">number of posts :</div>
             <div className="absolute top-[192px] left-[624px] inline-block w-[137px] h-[19px]">
               50
