@@ -9,10 +9,12 @@ const Header = () => {
           src="/frame-6@2x.png"
         />
         <div className="absolute top-[8px] left-[61px] inline-block w-[102px] h-[38px]">
-          Sign up
+        <a href="/singup">Sign Up</a>
         </div>
         <div className="absolute top-[0px] left-[176px] bg-salmon shrink-0 flex flex-row items-center justify-center py-2.5 px-[18px] text-black">
-          <div className="relative">Login</div>
+        <div className="relative">
+          <a href="/login">Login</a>
+        </div>
         </div>
         <img
           className="absolute top-[0px] left-[300px] w-[101.14px] h-[63px] shrink-0 object-cover"
