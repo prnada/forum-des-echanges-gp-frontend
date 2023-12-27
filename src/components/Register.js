@@ -20,7 +20,7 @@ const Register = () => {
       const navigate=useNavigate()
       const handleSubmit=(e)=> {
           e.preventDefault()
-          axios.post('http://localhost:3000/register', {nom,prenom,age,email,password,pays})
+          axios.post('http://localhost:3001/register', {nom,prenom,age,email,password,pays})
           .then(result => {console.log(result)
           navigate('/login')
           })

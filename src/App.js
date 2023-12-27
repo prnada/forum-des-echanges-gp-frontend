@@ -11,20 +11,23 @@ import Success from './components/Success';
 import Posts from './Pages/Posts'
 import PostPage from './Pages/PostPage'
 import OtherProfile from './Pages/OtherProfile';
+import AddCategory from './components/AddCategory';
 function App() {
   return (
     <Router>
       <div>
         <Routes>
-          <Route path="/" Component={Home} />
+          <Route path="/home" Component={Home} />
           <Route path="/profile" Component={Profile} />
-          <Route path="/categories" Component={Categories} />
+          
           <Route path="/login" Component={Login} />
-          <Route path="/Register" Component={Register} />
+          <Route path="/singup" Component={Register} />
           <Route path="/Success" Component={Success} />
           <Route path="/Posts" Component={Posts} />
           <Route path="/Post" Component={PostPage} />
           <Route path="/OtherProfile" Component={OtherProfile} />
+          <Route path="/categories" Component={Categories} />
+          <Route path="/new-category" Component={AddCategory} />
         </Routes>
       </div>
     </Router>

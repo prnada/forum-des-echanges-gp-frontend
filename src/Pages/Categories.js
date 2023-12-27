@@ -1,5 +1,6 @@
 import Category from "../components/Category";
 import Header2 from "../components/Header2";
+import { Link } from "react-router-dom";
 
 const Categories = () => {
   return (
@@ -8,14 +9,14 @@ const Categories = () => {
       <main className="flex-grow p-4">
         <div className="flex justify-between items-center mb-4">
           <h1 className="text-4xl font-extrabold">Categories</h1>
-          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          <Link to="/new-category" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
             Add Category
-          </button>
+          </Link>
+           
         </div>
         <section>
           <Category />
-          <Category />
-          <Category />
+          
         </section>
       </main>
       <footer className="bg-black text-white p-4 text-center mt-auto">
