@@ -1,36 +1,69 @@
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import SideBar from "../components/SideBar";
+
 const Header = () => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const toggleSidebar = (e) => {
+    e.stopPropagation();
+    console.log('Toggling sidebar, current state:', !isSidebarOpen);
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
+  // Effect to add event listener to close the sidebar when clicking outside of it
+  useEffect(() => {
+    const closeSidebar = (event) => {
+      if (event.target.closest('.sidebar') === null) {
+        setIsSidebarOpen(false);
+      }
+    };
+
+    // Add when the sidebar is open and remove when it is closed
+    if (isSidebarOpen) {
+      window.addEventListener('click', closeSidebar);
+    }
+    console.log('Sidebar should be:', isSidebarOpen ? 'open' : 'closed');
+    // Cleanup the event listener
+    return () => {
+      window.removeEventListener('click', closeSidebar);
+    };
+  }, [isSidebarOpen]);
+
   return (
-    <div className="absolute top-[0px] left-[0px] bg-black w-[1540px] overflow-hidden flex flex-row items-center justify-start py-[11px] px-[39px] box-border gap-[780px] font-inter">
-      <div className="relative">Forum name</div>
-      <div className="relative w-[473px] h-[63px] shrink-0 font-itim">
-        <img
-          className="absolute top-[0px] left-[0px] w-12 h-[61.6px] shrink-0 object-cover"
-          alt=""
-          src="/frame-6@2x.png"
-        />
-        <div className="absolute top-[8px] left-[61px] inline-block w-[102px] h-[38px]">
-        <a href="/singup">Sign Up</a>
-        </div>
-        <div className="absolute top-[0px] left-[176px] bg-salmon shrink-0 flex flex-row items-center justify-center py-2.5 px-[18px] text-black">
-        <div className="relative">
-          <a href="/login">Login</a>
-        </div>
-        </div>
-        <img
-          className="absolute top-[0px] left-[300px] w-[101.14px] h-[63px] shrink-0 object-cover"
-          alt=""
-          src="/frame-5@2x.png"
-        />
-        <div className="absolute top-[16px] left-[401px] shrink-0 flex flex-col items-start justify-start gap-[15px]">
+    <header>
+      <div className="bg-black text-white w-full flex justify-between items-center py-2 px-4 md:px-8 lg:px-16 relative">
+        <Link to='/' className="text-white">Forum Name</Link>
+        <div className="flex items-center gap-4">
           <img
-            className="relative max-h-full w-[49px] object-cover z-[0]"
+            className="w-12 h-auto"
             alt=""
+            src="/frame-6@2x.png"
+          />
+          <Link to="/register" className="text-white text-base no-underline">Sign up</Link>
+          <div className="bg-salmon flex items-center justify-center py-2 px-4 text-black">
+            <Link to="/login" className="no-underline text-base">
+              Login
+            </Link>
+          </div>
+          <Link to="/profile">
+            <img
+              className="w-24 h-auto"
+              alt=""
+              src="/frame-5@2x.png"
+            />
+          </Link>
+          <img
+            className="w-12 h-auto cursor-pointer"
+            alt="Menu icon"
             src="/line-1@2x.png"
+            onClick={toggleSidebar}
           />
         </div>
+        {isSidebarOpen && <SideBar />}
       </div>
-    </div>
+    </header>
   )
 };
-export default Header;
 
+export default Header;
