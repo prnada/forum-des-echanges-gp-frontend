@@ -21,7 +21,7 @@ const Login = () => {
             .then(result => {
                 console.log(result)
                 if (result.data === "success") {
-                    navigate('/home')
+                    navigate('/categories')
                 }
             })
             .catch(err => console.log(err))
