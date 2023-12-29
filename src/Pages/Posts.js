@@ -36,14 +36,6 @@ const Posts = () => {
               comments={5}
               category="Tech"
             />
-            <Post
-              title="Example Post Title2"
-              date="2023-01-01"
-              creator="John Doe2"
-              comments={5}
-              category="Tech"
-            />
-            {/* Add more Post components as needed */}
           </div>
           <Pagination />
 
