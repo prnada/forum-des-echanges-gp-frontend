@@ -1,7 +1,18 @@
+import { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import Header2 from "../components/Header2";
 import SideBar from '../components/SideBar';
 const Profile = () => {
+  const [profileData, setProfileData] = useState(null);
+
+  useEffect(() => {
+    fetch('http://localhost:3001/profile', {
+      credentials: 'include'
+    })
+      .then(response => response.json())
+      .then(data => setProfileData(data))
+      .catch(error => console.error(error));
+  }, []);
   return (
     <div className="relative bg-white w-full h-[1024px] overflow-hidden">
       <div className="absolute top-[0px] left-[0px] w-[1536px] h-[1213px]">
@@ -10,16 +21,19 @@ const Profile = () => {
           <Footer />
           <SideBar />
           <div className="absolute top-[147px] left-[111px] w-[824px] h-[399px] text-left text-21xl text-black font-itim">
-            <div className="absolute top-[34px] left-[303px] text-35xl inline-block w-[398px] h-[101px]">
-              Full name
-            </div>
-            <div className="absolute top-[97px] left-[303px] text-gray">
-              email address
-            </div>
-            <div className="absolute top-[187px] left-[308px]">number of posts :</div>
-            <div className="absolute top-[192px] left-[624px] inline-block w-[137px] h-[19px]">
-              50
-            </div>
+            {profileData && (<>
+              <div className="absolute top-[34px] left-[303px] text-35xl inline-block w-[398px] h-[101px]">
+                {profileData.fullname}
+              </div>
+              <div className="absolute top-[97px] left-[303px] text-gray">
+                {profileData.email}
+              </div>
+              <div className="absolute top-[187px] left-[308px]">Number of posts:</div>
+              <div className="absolute top-[192px] left-[624px] inline-block w-[137px] h-[19px]">
+                {profileData.numberofposts}
+              </div>
+            </>
+            )}
             <div className="absolute top-[253px] left-[298px] bg-palegreen flex flex-row items-center justify-center p-2.5">
               <div className="relative">Edit profile</div>
             </div>
