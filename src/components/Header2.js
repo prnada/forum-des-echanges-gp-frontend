@@ -35,7 +35,13 @@ const Header2 = () => {
       <Link to='/' className="text-2xl lg:text-3xl font-bold text-white">Forum Name</Link>
       <div className="flex items-center gap-3 lg:gap-5">
         <img className="w-8 h-8 lg:w-15 lg:h-10" src="/frame-6@2x.png" alt="Notifications" />
-        <img className="w-16 h-8 lg:w-15 lg:h-10" src="/frame-5@2x.png" alt="User account" />
+        <Link to="/profile">
+          <img
+            className="w-13 h-10"
+            alt=""
+            src="/frame-5@2x.png"
+          />
+        </Link>
         <img className="w-8 h-8 lg:w-15 lg:h-10 cursor-pointer z-20" src="/line-1@2x.png" alt="Menu" onClick={toggleSidebar} />
       </div>
       {isSidebarOpen && <div className="sidebar"><SideBar /></div>}
