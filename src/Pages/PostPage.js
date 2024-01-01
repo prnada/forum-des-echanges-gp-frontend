@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Header2 from '../components/Header2';
 import Footer2 from '../components/Footer2';
 import Pagination from '../components/Pagination';
-import PostDetail from '../components/PostDetail'; // Import the PostDetail component
+import PostDetail from '../components/PostDetail'; 
 
 const PostPage = () => {
     const [newComment, setNewComment] = useState('');
