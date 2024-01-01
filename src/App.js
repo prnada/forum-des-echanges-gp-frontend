@@ -12,12 +12,16 @@ import Posts from './Pages/Posts'
 import PostPage from './Pages/PostPage'
 import OtherProfile from './Pages/OtherProfile';
 import AddCategory from './components/AddCategory';
+import AfterLogin from './Pages/AfterLogin';
+import AdminPage from './components/AdminPage';
 function App() {
   return (
     <Router>
       <div>
         <Routes>
           <Route path="/" Component={Home} />
+          <Route path="/home" Component={AfterLogin} />
+          <Route path="/admin" Component={AdminPage} />
           <Route path="/profile/:id" Component={Profile} />
           <Route path="/login" Component={Login} />
           <Route path="/register" Component={Register} />

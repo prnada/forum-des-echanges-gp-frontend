@@ -1,18 +1,29 @@
-import axios from "axios";
-import AdminPage from "../components/AdminPage";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-import SideBar from '../components/SideBar';
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+ 
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom';
+import Categories from "./Categories";
+import Header2 from '../components/Header2';
+import Footer2 from '../components/Footer2';
+import { jwtDecode } from "jwt-decode"; 
 
-
-const Home = () => {
+const AfterLogin = () => {
     const [nom ,setNom]=useState('');
     const [role ,setRole]=useState('');
    
     const navigate=useNavigate();
-    
+    const token = document.cookie
+    if(token!=''){
+      token.split('; ')
+      .find(row => row.startsWith('token='))
+      .split('=')[1];
+      const decoded = jwtDecode(token);
+      console.log(decoded.role)
+
+      {role=== "admin" && navigate('/admin')}
+      {role==="user" && navigate('/categories') }
+    }
+  
   return (
     <div className="relative bg-white w-full h-[1024px] overflow-hidden">
       <div className="absolute top-[0px] left-[0px] w-[1536px] h-[1213px]">
@@ -43,7 +54,12 @@ const Home = () => {
                 alt=""
                 src="/arrow-1@2x.png"
               />
-              <div className="relative">Explore</div>
+              <div>
+              <Link to="/categories" className="relative">
+              Explore
+            </Link>
+              </div>
+              
             </div>
            
             <img
@@ -51,13 +67,14 @@ const Home = () => {
               alt=""
               src="/ideasvgrepocom-1@2x.png"
             />
-            <Footer />
-            <Header />
+          
+            <Header2 />
+            
           </div>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Home;
+export default AfterLogin
