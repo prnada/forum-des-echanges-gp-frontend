@@ -12,6 +12,7 @@ import Posts from './Pages/Posts'
 import PostPage from './Pages/PostPage'
 import OtherProfile from './Pages/OtherProfile';
 import AddCategory from './components/AddCategory';
+import Posting from './Pages/Posting';
 function App() {
   return (
     <Router>
@@ -27,6 +28,7 @@ function App() {
           <Route path="/OtherProfile" Component={OtherProfile} />
           <Route path="/categories" Component={Categories} />
           <Route path="/new-category" Component={AddCategory} />
+          <Route path="/Posting" Component={Posting} />
         </Routes>
       </div>
     </Router>
