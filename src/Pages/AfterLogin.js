@@ -1,29 +1,41 @@
- 
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import Categories from "./Categories";
 import Header2 from '../components/Header2';
 import Footer2 from '../components/Footer2';
-import { jwtDecode } from "jwt-decode"; 
+import { jwtDecode } from "jwt-decode";
 
 const AfterLogin = () => {
-    const [nom ,setNom]=useState('');
-    const [role ,setRole]=useState('');
-   
-    const navigate=useNavigate();
-    const token = document.cookie
-    if(token!=''){
-      token.split('; ')
-      .find(row => row.startsWith('token='))
-      .split('=')[1];
-      const decoded = jwtDecode(token);
-      console.log(decoded.role)
+  const navigate = useNavigate();
 
-      {role=== "admin" && navigate('/admin')}
-      {role==="user" && navigate('/categories') }
+  useEffect(() => {
+    const getCookieValue = (name) => (
+      document.cookie
+        .split('; ')
+        .find(row => row.startsWith(`${name}=`))
+        ?.split('=')[1]
+    );
+
+    const token = getCookieValue('token');
+
+    if (token) {
+      try {
+        const decoded = jwtDecode(token);
+        console.log(decoded.role);
+
+        if (decoded.role === 'admin') {
+          navigate('/admin');
+        } else {
+          navigate('/home');
+        }
+      } catch (error) {
+        console.error("Error decoding token:", error);
+        // Handle the error appropriately
+      }
     }
-  
+  }, []);
+
   return (
     <div className="relative bg-white w-full h-[1024px] overflow-hidden">
       <div className="absolute top-[0px] left-[0px] w-[1536px] h-[1213px]">
@@ -47,7 +59,7 @@ const AfterLogin = () => {
                 </li>
               </ul>
             </div>
-         
+
             <div className="absolute top-[770px] left-[162px] bg-salmon h-[67px] flex flex-row items-center justify-center py-2.5 pr-[60px] pl-[22px] box-border gap-[11px] text-black">
               <img
                 className="relative max-h-full w-10 object-cover"
@@ -55,21 +67,21 @@ const AfterLogin = () => {
                 src="/arrow-1@2x.png"
               />
               <div>
-              <Link to="/categories" className="relative">
-              Explore
-            </Link>
+                <Link to="/categories" className="relative">
+                  Explore
+                </Link>
               </div>
-              
+
             </div>
-           
+
             <img
               className="absolute top-[148px] left-[160px] w-[239px] h-[239px] overflow-hidden object-cover"
               alt=""
               src="/ideasvgrepocom-1@2x.png"
             />
-          
+
             <Header2 />
-            
+
           </div>
         </div>
       </div>

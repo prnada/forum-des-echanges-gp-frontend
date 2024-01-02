@@ -32,7 +32,7 @@ const SideBar = () => {
       <div className="p-4 text-white">
         Q/A
       </div>
-    
+      <a href='/categories' className="p-6 text-white"  >Categories</a>
       <a href='/login' className="p-6 text-white" onClick={handleLogout}>Logout</a>
     </div>
   );
