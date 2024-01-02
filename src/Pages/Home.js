@@ -43,7 +43,11 @@ const Home = () => {
                 alt=""
                 src="/arrow-1@2x.png"
               />
-              <div className="relative">Explore</div>
+              <div className="relative">
+                <a href="/Posts" style={{ fontSize: '1.5rem', fontWeight: 'bold', textDecoration: 'none', color: 'black' }}>
+                  Explore
+                </a>
+              </div>
             </div>
            
             <img
