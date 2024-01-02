@@ -1,7 +1,6 @@
 import Post from "./Post";
-import Pagination from "../components/Pagination";
 import Header2 from "../components/Header2";
-import Footer2 from "../components/Footer2";
+
 const Posts = () => {
   return (
     <div className="font-inter text-white">
@@ -13,7 +12,11 @@ const Posts = () => {
         </div>
         <div className="p-10">
           <div className="flex justify-between items-center mb-6">
-            <button className="bg-black text-white p-2 rounded">Rédiger</button>
+          <button className="bg-black p-2 rounded">
+            <a href="/Posting" className="text-white" style={{ textDecoration: 'none' }}>
+              Rédiger
+            </a>
+          </button>
             <div className="flex items-center bg-brown rounded p-2">
               <span className="text-white mr-2">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-search" viewBox="0 0 16 16">
@@ -29,16 +32,8 @@ const Posts = () => {
             </div>
           </div>
           <div className="space-y-4">
-            <Post
-              title="Example Post Title"
-              date="2023-01-01"
-              creator="John Doe"
-              comments={5}
-              category="Tech"
-            />
+          <Post />
           </div>
-          <Pagination />
-
         </div>
       </div>
       <footer className="bg-black text-white p-4 text-center mt-auto">

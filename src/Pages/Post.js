@@ -26,7 +26,7 @@ const PostList = () =>
     useEffect(() => {
         const fetchPosts = async () => {
             try {
-                const response = await fetch('https://jsonplaceholder.typicode.com/posts'); //url 7ta nbdlouha mn ba3d
+                const response = await fetch("http://localhost:3001/Posts"); 
                 if (response.ok) {
                     const data = await response.json();
                     setPosts(data);
@@ -46,9 +46,9 @@ const PostList = () =>
             {posts.map((post) => (
                 <Post
                     key={post.id}
-                    title={post.title}
-                    date='Just now'
-                    creator={post.userId}
+                    title={post.titre}  
+                    date={post.date}
+                    creator={post.personne}
                     comments='0'
                     category='Unspecified'
                 />
