@@ -35,7 +35,6 @@ const OtherProfile = () => {
               alt=""
               src="/ellipse-36@2x.png"
             />
-
           </div>
         </div>
       </div>
