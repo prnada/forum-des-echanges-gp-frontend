@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import SideBar from "../components/SideBar";
+import { useCookies } from "react-cookie";
 
 const Header = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
   const toggleSidebar = (e) => {
     e.stopPropagation();
     console.log('Toggling sidebar, current state:', !isSidebarOpen);
@@ -35,24 +35,19 @@ const Header = () => {
       <div className="bg-black text-white w-full flex justify-between items-center py-2 px-4 md:px-8 lg:px-16 relative">
         <Link to='/' className="text-white">Forum Name</Link>
         <div className="flex items-center gap-4">
-          <img
-            className="w-12 h-auto"
-            alt=""
-            src="/frame-6@2x.png"
-          />
           <Link to="/register" className="text-white text-base no-underline">Sign up</Link>
           <div className="bg-salmon flex items-center justify-center py-2 px-4 text-black">
             <Link to="/login" className="no-underline text-base">
               Login
             </Link>
           </div>
-          <Link to="/profile">
+          {/* <Link to={`/profile/${decodedToken.id}`}>
             <img
               className="w-24 h-auto"
               alt=""
               src="/frame-5@2x.png"
             />
-          </Link>
+          </Link> */}
           <img
             className="w-12 h-auto cursor-pointer"
             alt="Menu icon"
