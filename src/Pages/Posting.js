@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { jwtDecode } from 'jwt-decode';
 import Header2 from '../components/Header2';
+import { useNavigate } from 'react-router-dom';
 
 function Posting() {
   const [postTitle, setPostTitle] = useState('');
@@ -37,7 +38,6 @@ function Posting() {
     )
       .then((result) => {
         console.log('Post submitted successfully');
-        history.push('/posts');
       })
       .catch((err) => {
         console.error('Failed to submit post:', err);
@@ -79,13 +79,9 @@ function Posting() {
                   value={postBody}
                   onChange={handleBodyChange}
                 ></textarea>
-              </div>
-              <button
-                type="submit"
-                className="bg-black text-white p-2 rounded"
-              >
-                Submit Post
-              </button>
+              </div> <center>
+              <button type="submit" className="bg-black text-white p-2 rounded">Submit Post</button> <br/><br/>
+              <p><a href='/Posts'>Abort, and return to home ←</a></p> </center>
             </form>
           </div>
         </div>
