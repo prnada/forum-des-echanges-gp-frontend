@@ -2,8 +2,10 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { jwtDecode } from 'jwt-decode';
 import Header2 from '../components/Header2';
+import { useNavigate } from 'react-router-dom';
 
-function Posting() {
+const Posting = () => {
+  const navigate = useNavigate();
   const [postTitle, setPostTitle] = useState('');
   const [postBody, setPostBody] = useState('');
 
@@ -18,26 +20,28 @@ function Posting() {
   const handlePostSubmit = (e) => {
     e.preventDefault();
 
-    const token = document.cookie.split('; ').find(row => row.startsWith('token=')).split('=')[1];
+    const token = document.cookie.split('; ').find((row) => row.startsWith('token=')).split('=')[1];
     const decoded = jwtDecode(token);
     const loggedInUserId = decoded.id;
 
     axios
-      .post('http://localhost:3001/Posting', {
-        titre: postTitle,
-        contenu: postBody,
-        personne: loggedInUserId 
-      },
-      {
-        headers: {
-          'Content-Type': 'application/json',
+      .post(
+        'http://localhost:3001/Posting',
+        {
+          titre: postTitle,
+          contenu: postBody,
+          personne: loggedInUserId,
         },
-        withCredentials: true, 
-      }  
-    )
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          withCredentials: true,
+        }
+      )
       .then((result) => {
         console.log('Post submitted successfully');
-        history.push('/posts');
+        navigate('/Posts');
       })
       .catch((err) => {
         console.error('Failed to submit post:', err);
@@ -80,10 +84,7 @@ function Posting() {
                   onChange={handleBodyChange}
                 ></textarea>
               </div>
-              <button
-                type="submit"
-                className="bg-black text-white p-2 rounded"
-              >
+              <button type="submit" className="bg-black text-white p-2 rounded">
                 Submit Post
               </button>
             </form>
@@ -96,6 +97,6 @@ function Posting() {
       </footer>
     </div>
   );
-}
+};
 
 export default Posting;

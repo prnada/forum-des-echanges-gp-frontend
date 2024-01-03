@@ -57,6 +57,11 @@ const Post = ({ title, date, creator, comments, category, postId }) => {
             View more
           </Link>
         </button>
+        <button className="bg-blue-500 hover:bg-blue-700 text-white rounded px-4 py-2 mt-2 md:mt-0 md:ml-4 transition-colors duration-200">
+          <Link to={`/updatePost/${postId}`} style={{ color: 'white', textDecoration: 'none' }}>
+            Update
+          </Link>
+        </button>
       </div>
     );
 };
