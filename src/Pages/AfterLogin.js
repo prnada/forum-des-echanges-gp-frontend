@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> f3ee9a2ff31fde8fbcf91fecf7cd083c5324c30a
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
@@ -31,11 +27,7 @@ const AfterLogin = () => {
         if (decoded.role === 'admin') {
           navigate('/admin');
         } else {
-<<<<<<< HEAD
-          navigate('/home');
-=======
           navigate('/categories');
->>>>>>> f3ee9a2ff31fde8fbcf91fecf7cd083c5324c30a
         }
       } catch (error) {
         console.error("Error decoding token:", error);
