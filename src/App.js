@@ -1,7 +1,5 @@
 import { BrowserRouter as Router, Routes } from 'react-router-dom';
-import {
-  Route
-} from "react-router-dom";
+import { Route } from "react-router-dom";
 import Home from "./Pages/Home";
 import Profile from "./Pages/Profile";
 import Categories from "./Pages/Categories";
@@ -12,11 +10,10 @@ import Posts from './Pages/Posts'
 import PostPage from './Pages/PostPage'
 import OtherProfile from './Pages/OtherProfile';
 import AddCategory from './components/AddCategory';
- 
 import AfterLogin from './Pages/AfterLogin';
 import AdminPage from './components/AdminPage';
- 
 import Posting from './Pages/Posting';
+
  
 function App() {
   return (
@@ -31,6 +28,7 @@ function App() {
           <Route path="/register" Component={Register} />
           <Route path="/Success" Component={Success} />
           <Route path="/Posts" Component={Posts} />
+          <Route path="/PostPage/:id" Component={PostPage} />
           <Route path="/Post" Component={PostPage} />
           <Route path="/OtherProfile" Component={OtherProfile} />
           <Route path="/categories" Component={Categories} />
