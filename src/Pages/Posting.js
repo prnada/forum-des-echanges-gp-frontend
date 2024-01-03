@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { jwtDecode } from 'jwt-decode';
 import Header2 from '../components/Header2';
 import { useNavigate } from 'react-router-dom';
+import { useCookies } from 'react-cookie';
 
 const Posting = () => {
   const navigate = useNavigate();
@@ -20,9 +21,11 @@ const Posting = () => {
   const handlePostSubmit = (e) => {
     e.preventDefault();
 
-    const token = document.cookie.split('; ').find((row) => row.startsWith('token=')).split('=')[1];
-    const decoded = jwtDecode(token);
-    const loggedInUserId = decoded.id;
+    const [cookies] = useCookies(['token']);
+    console.log(cookies)
+    const decodedToken = jwtDecode(cookies.token);
+ 
+    const loggedInUserId = decodedToken.id;
 
     axios
       .post(
@@ -41,10 +44,6 @@ const Posting = () => {
       )
       .then((result) => {
         console.log('Post submitted successfully');
-<<<<<<< HEAD
-        navigate('/Posts');
-=======
->>>>>>> b420e5635be94a175fe2a94a46133a84ef07a295
       })
       .catch((err) => {
         console.error('Failed to submit post:', err);
@@ -86,16 +85,9 @@ const Posting = () => {
                   value={postBody}
                   onChange={handleBodyChange}
                 ></textarea>
-<<<<<<< HEAD
-              </div>
-              <button type="submit" className="bg-black text-white p-2 rounded">
-                Submit Post
-              </button>
-=======
               </div> <center>
               <button type="submit" className="bg-black text-white p-2 rounded">Submit Post</button> <br/><br/>
               <p><a href='/Posts'>Abort, and return to home ←</a></p> </center>
->>>>>>> b420e5635be94a175fe2a94a46133a84ef07a295
             </form>
           </div>
         </div>
