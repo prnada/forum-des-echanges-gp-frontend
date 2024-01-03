@@ -1,10 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import SideBar from './SideBar';
+import { jwtDecode } from 'jwt-decode';
+import { useCookies } from 'react-cookie';
 
 const Header2 = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
+  const [cookies] = useCookies(['token']);
+  console.log(cookies)
+  if (!cookies.token) {
+    // If not, redirect to /login
+    return <Navigate to="/login" />;
+  }
+  const decodedToken = jwtDecode(cookies.token);
   // Function to handle opening the sidebar
   const toggleSidebar = (e) => {
     e.stopPropagation(); // Prevents click from immediately closing the sidebar
@@ -35,7 +43,7 @@ const Header2 = () => {
       <Link to='/' className="text-2xl lg:text-3xl font-bold text-white">Forum Name</Link>
       <div className="flex items-center gap-3 lg:gap-5">
         <img className="w-8 h-8 lg:w-15 lg:h-10" src="/frame-6@2x.png" alt="Notifications" />
-        <Link to="/profile">
+        <Link to={`/profile/${decodedToken.id}`}>
           <img
             className="w-13 h-10"
             alt=""
@@ -43,8 +51,9 @@ const Header2 = () => {
           />
         </Link>
         <img className="w-8 h-8 lg:w-15 lg:h-10 cursor-pointer z-20" src="/line-1@2x.png" alt="Menu" onClick={toggleSidebar} />
+        {isSidebarOpen && <div className="sidebar"><SideBar /></div>}
       </div>
-      {isSidebarOpen && <div className="sidebar"><SideBar /></div>}
+
     </header>
   );
 };
