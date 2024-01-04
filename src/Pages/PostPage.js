@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import Header2 from '../components/Header2';
-import Footer2 from '../components/Footer2';
-import Pagination from '../components/Pagination';
+import { useParams } from 'react-router-dom';
 import PostDetail from '../components/PostDetail'; 
 
 const PostPage = () => {
     const [newComment, setNewComment] = useState('');
     const [comments, setComments] = useState([]);
+    const topass = useParams();
 
     const handleCommentChange = (event) => {
         setNewComment(event.target.value);
@@ -30,25 +30,31 @@ const PostPage = () => {
     useEffect(() => {
         const fetchComments = async () => {
             try {
-                const response = await fetch('https://jsonplaceholder.typicode.com/comments');
-                if (response.ok) {
-                    const data = await response.json();
-                    const formattedComments = data.map((comment) => ({
-                        postid: comment.postId,
-                        id: comment.id,
-                        author: comment.name,
-                        content: comment.body,
-                        time: 'Just now',
-                        profilePic: '/default_profile_pic_placeholder.png',
-                    }));
-                    setComments(formattedComments);
-                } else {
-                    console.error('Failed to fetch comments');
+              const response = await fetch('');
+              if (response.ok) {
+                const data = await response.json();
+                const formattedComments = data.map((comment) => ({
+                  postid: comment.postId,
+                  id: comment.id,
+                  author: comment.name,
+                  content: comment.body,
+                  time: 'Just now',
+                  profilePic: '/default_profile_pic_placeholder.png',
+                }));
+                setComments(formattedComments);
+          
+                // Set the desired post ID
+                const firstComment = data[0];
+                if (firstComment) {
+                  setDesiredPostId(firstComment.postId);
                 }
+              } else {
+                console.error('Failed to fetch comments');
+              }
             } catch (error) {
-                console.error('Error fetching comments:', error);
+              console.error('Error fetching comments:', error);
             }
-        };
+          };
 
         fetchComments();
     }, []);
@@ -57,8 +63,8 @@ const PostPage = () => {
         <div className="bg-gray-900 text-gray-300 flex flex-col w-full">
             <Header2 />
             <main className="w-full p-4 flex-grow">
-                {/* Use the PostDetail component to fetch and display post details */}
-                <PostDetail />
+                <PostDetail torecieve={topass} />
+                <br></br>
                 <section className="mb-6 w-full">
                     <textarea
                         className="w-full bg-gray-800 rounded-lg p-3 text-gray-300 leading-normal resize-none focus:outline-none focus:ring-2 focus:ring-red-500"
@@ -75,9 +81,7 @@ const PostPage = () => {
                     </button>
                 </section>
                 <br></br><br></br>
-                <section className="bg-gray-800 py-4 w-full">
-                    <h3 className="text-xl md:text-2xl text-white my-4">{'\u00A0'}{'\u00A0'}Comments</h3>
-                    {comments.map((comment) => (
+                <section className="bg-gray-800 py-4 w-full" style={{ maxHeight: 'auto', minHeight: '50vh' }}>                    {comments.map((comment) => (
                         <div key={comment.id} className="bg-gray-700 my-4 p-4 rounded-lg shadow flex mx-auto w-5/6">
                             <img
                                 src={comment.profilePic || 'default_profile_pic_placeholder.png'}
@@ -97,8 +101,9 @@ const PostPage = () => {
                     ))}
                 </section>
             </main>
-            <Pagination></Pagination>
-            <Footer2 />
+            <footer className="bg-black text-white p-4 text-center mt-auto">
+                All Rights Reserved. © 2024 Forum Name
+            </footer>
         </div>
     );
 };

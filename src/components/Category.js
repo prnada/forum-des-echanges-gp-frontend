@@ -102,10 +102,10 @@ const Category = () => {
         <table className='table'>
           <thead>
             <tr>
-              <th >Nom</th>
+              <th >Name</th>
               <th >Description</th>
-              <th >Date de creation</th>
-              <th > Actions</th>
+              <th >Creation date</th>
+              <th >Actions</th>
             </tr>
           </thead>
           <tbody>

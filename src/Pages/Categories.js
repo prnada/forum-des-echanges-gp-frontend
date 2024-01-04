@@ -34,7 +34,8 @@ const Categories = () => {
       <Header2></Header2>
       <main className="flex-grow p-4">
         <div className="flex justify-between items-center mb-4">
-          <h1 className="text-4xl font-extrabold">Categories</h1>
+          <h1 className="text-4xl font-extrabold">Categories</h1><br/>
+          <h3 className="text-left"><a href="/Posts">Discover more, find posts you surely would like!</a></h3>
           {decoded && decoded.role === 'admin' && (
             <Link
               to="/new-category"
