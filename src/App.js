@@ -13,6 +13,8 @@ import AddCategory from './components/AddCategory';
 import AfterLogin from './Pages/AfterLogin';
 import AdminPage from './components/AdminPage';
 import Posting from './Pages/Posting';
+import UpdatePost from './Pages/UpdatePost';
+
 
  
 function App() {
@@ -34,6 +36,7 @@ function App() {
           <Route path="/categories" Component={Categories} />
           <Route path="/new-category" Component={AddCategory} />
           <Route path="/Posting" Component={Posting} />
+          <Route path='/updatePost/:id' element= {<UpdatePost />} ></Route>
         </Routes>
       </div>
     </Router>

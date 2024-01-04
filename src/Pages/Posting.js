@@ -3,8 +3,10 @@ import React, { useState } from 'react';
 import { jwtDecode } from 'jwt-decode';
 import Header2 from '../components/Header2';
 import { useNavigate } from 'react-router-dom';
+import { useCookies } from 'react-cookie';
 
-function Posting() {
+const Posting = () => {
+  const navigate = useNavigate();
   const [postTitle, setPostTitle] = useState('');
   const [postBody, setPostBody] = useState('');
 
@@ -19,23 +21,27 @@ function Posting() {
   const handlePostSubmit = (e) => {
     e.preventDefault();
 
-    const token = document.cookie.split('; ').find(row => row.startsWith('token=')).split('=')[1];
-    const decoded = jwtDecode(token);
-    const loggedInUserId = decoded.id;
+    const [cookies] = useCookies(['token']);
+    console.log(cookies)
+    const decodedToken = jwtDecode(cookies.token);
+ 
+    const loggedInUserId = decodedToken.id;
 
     axios
-      .post('http://localhost:3001/Posting', {
-        titre: postTitle,
-        contenu: postBody,
-        personne: loggedInUserId 
-      },
-      {
-        headers: {
-          'Content-Type': 'application/json',
+      .post(
+        'http://localhost:3001/Posting',
+        {
+          titre: postTitle,
+          contenu: postBody,
+          personne: loggedInUserId,
         },
-        withCredentials: true, 
-      }  
-    )
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          withCredentials: true,
+        }
+      )
       .then((result) => {
         console.log('Post submitted successfully');
       })
@@ -92,6 +98,6 @@ function Posting() {
       </footer>
     </div>
   );
-}
+};
 
 export default Posting;
